@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M_LAIN</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/originals/c3/c8/b1/c3c8b13849d4b1e377dde38692457cdd.gif');
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .button {
+            background-color: #4a6e9d;
+            color: white; 
+            padding: 15px 30px; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            text-decoration: none; 
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #3b5980;
+        }
+
+        #nameInputSection {
+            margin-top: 50px;
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            background-image: url('https://i.pinimg.com/originals/7c/c5/7a/7cc57aa767a8764bc2389635c036d9fe.gif');
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        #greetingSection {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .inputBox {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 2px solid #4a6e9d;
+        }
+
+        .submitBtn {
+            background-color: #4a6e9d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submitBtn:hover {
+            background-color: #3b5980;
+        }
+
+        
+        #userInputSection {
+            display: none;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .userTextArea {
+            width: 300px;
+            height: 100px;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 2px solid #4a6e9d;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="helloUser">Hello, User.</h1>
+    <a href="#" class="button" id="helloNavi">Hello Navi</a>
+
+    <div id="nameInputSection">
+        <h2>Please enter your name:</h2>
+        <input type="text" id="nameInput" class="inputBox" placeholder="Enter your name here.">
+        <button class="submitBtn" id="submitNameBtn">Submit</button>
+    </div>
+
+    <div id="greetingSection">
+        <h2 id="greetingMessage"></h2>
+    </div>
+
+    <div id="userInputSection">
+        <h2>How was your day?</h2>
+        <textarea class="userTextArea" id="userTextArea" placeholder="Write here..."></textarea>
+    </div>
+
+    <script>
+        // HELLO NAVI BUTTON
+        document.getElementById('helloNavi').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            document.getElementById('helloUser').style.display = 'none'; 
+            document.getElementById('helloNavi').style.display = 'none'; 
+            document.getElementById('nameInputSection').style.display = 'block';
+        });
+
+        // USERNAME
+        document.getElementById('submitNameBtn').addEventListener('click', function() {
+            let userName = document.getElementById('nameInput').value;
+            if (userName.trim() !== "") {
+                document.getElementById('nameInputSection').style.display = 'none'; 
+                document.getElementById('greetingSection').style.display = 'block'; 
+                document.getElementById('greetingMessage').textContent = "Hello, " + userName + ". Welcome to [M_LAIN]."; 
+                
+            
+                setTimeout(function() {
+                    let userInputSection = document.getElementById('userInputSection');
+                    userInputSection.style.display = 'block';
+                    userInputSection.style.opacity = '1';
+                }, 1200); 
+            } else {
+                alert("Please enter a valid name. Allow Navi to know who you are.");
+            }
+        });
+    </script>
+
+</body>
+</html>
